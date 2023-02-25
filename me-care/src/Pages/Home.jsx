@@ -1,25 +1,30 @@
-import Banner from "./Banner";
-import Navbar from "./Nav";
+import Banner from "../Component/Banner";
+import Navbar from "../Component/Nav";
 import { Flex , Center, Box, Text, Grid } from "@chakra-ui/react";
 import {Image} from "@chakra-ui/react"
 // import ImageSlider from "./imageSlider";
 import best from "../images/best.png"
 import bestslr from "../images/bestslr.png";
 import newss from "../images/newss.png"
-import  ImageSlider from "./imageSlider";
-import SimpleSlider from "./slick";
-import LargeWithLogoLeft from "./Footer"
+import  ImageSlider from "../Component/imageSlider";
+import SimpleSlider from "../Component/slick";
+import LargeWithLogoLeft from "../Component/Footer"
+// import MassageChairPage from "./MassageChair";
+import {Link as RouterLink} from 'react-router-dom'
 
-
+ 
 // import { Carousel } from '@trendyol-js/react-carousel';
 
 function Home(){
+    
+    
     return (<>
     <Navbar/>
     <Center>
         <Flex flexDirection={"row"} gap={30} >
-        <Banner main="Massage" item1="Massage Chairs" item2="Eye" item3="Foot & Leg" item4="Hand" item5="Roller"/> 
-        <Banner main="Wellness" item1="Bath" item2="Cleansers & Serums" item3="CGrooming" item4="Hair Care" item5="Skin Care"/> 
+            <RouterLink></RouterLink>
+        <Banner main="Massage" item1="Massage Chairs" item2="Eye" item3="Foot & Leg" item4="Hand" item5="Roller" fn1={"/massagechair"}/> 
+        <Banner main="Wellness" item1="Bath" item2="Cleansers & Serums" item3="CGrooming" item4="Hair Care" item5="Skin Care" /> 
         <Banner main="Sleep" item1="Pillows" item2="Mattress" item3="Bedding" item4="Clocks" item5="Air Quality"/> 
         <Banner main="Home" item1="Bathroom" item2="Furniture" item3="Accent & Decor" item4="Kitchen" item5="Home Office"/> 
         <Banner main="Wine & Bar" item1="Glasswear" item2="Tech" item3="Decanters" item4="Gift Sets" item5="Tools & Accessories"/> 

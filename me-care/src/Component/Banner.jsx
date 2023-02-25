@@ -8,7 +8,10 @@ import {
         MenuList,
     } from "@chakra-ui/react"
     import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
-function Banner({main,item1,item2,item3,item4,item5}){
+   
+    
+import {Link as RouterLink} from "react-router-dom"
+function Banner({main,item1,item2,item3,item4,item5,fn1}){
     const { isOpen, onOpen, onClose } = useDisclosure();
     
 
@@ -16,7 +19,7 @@ function Banner({main,item1,item2,item3,item4,item5}){
         <>
         
        
-
+       
         <Menu 
         isOpen={isOpen}
         >
@@ -36,15 +39,17 @@ function Banner({main,item1,item2,item3,item4,item5}){
                {main} {isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
             </MenuButton>
             <MenuList onMouseEnter={onOpen} onMouseLeave={onClose}>
+                  <RouterLink to={fn1}><MenuItem>{item1}</MenuItem> </RouterLink>
+        
+            
                 
-                <MenuItem>{item1}</MenuItem>
                 <MenuItem>{item2}</MenuItem>
                 <MenuItem>{item3}</MenuItem>
                 <MenuItem>{item4}</MenuItem>
                 <MenuItem>{item5}</MenuItem>
             </MenuList>
         </Menu>
-       
+    
        
         
         </>
