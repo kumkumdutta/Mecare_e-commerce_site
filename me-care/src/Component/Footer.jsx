@@ -1,69 +1,90 @@
-import { ReactNode } from 'react';
-import Logo from "../images/Logo.png"
+
+import { BsTwitter, BsYoutube, BsInstagram } from "react-icons/bs";
 import {
+    Flex,
     Image,
   Box,
   Container,
-  Link,
-  SimpleGrid,
   Stack,
+  SimpleGrid,
   Text,
+  Link,
+ 
   useColorModeValue,
 } from '@chakra-ui/react';
+// import { FaTwitter, FaYoutube, FaInstagram } from 'react-icons/fa';
+
+// import AppStoreBadge from '@/components/AppStoreBadge';
+// import PlayStoreBadge from '@/components/PlayStoreBadge';
 
 
 
-export default function LargeWithLogoLeft() {
+
+
+export default function LargeWithAppLinksAndSocial() {
   return (
     <Box
       bg={useColorModeValue('gray.50', 'gray.900')}
       color={useColorModeValue('gray.700', 'gray.200')}>
       <Container as={Stack} maxW={'6xl'} py={10}>
-        <SimpleGrid
-          templateColumns={{ sm: '1fr 1fr', md: '2fr 1fr 1fr 1fr 1fr' }}
-          spacing={8}>
-          <Stack spacing={6}>
-            <Box>
-             <Image src={Logo}/> 
-            </Box>
-            <Text fontSize={'sm'}>
-              © 2022 Chakra Templates. All rights reserved
-            </Text>
-          </Stack>
+        <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
           <Stack align={'flex-start'}>
-          <Text fontSize={"20px"}>Product</Text>
-            <Link color={"gray.400"} href={'#'}>Overview</Link>
-            <Link color={"gray.400"} href={'#'}>Features</Link>
-            <Link color={"gray.400"} href={'#'}>Tutorials</Link>
-            <Link color={"gray.400"} href={'#'}>Pricing</Link>
-            <Link color={"gray.400"} href={'#'}>Releases</Link>
+            <Text fontSize={"2xl"} mb={"10px"}>Company</Text>
+            <Link href={'#'}>About Us</Link>
+            <Link href={'#'}>Blog</Link>
+            <Link href={'#'}>Careers</Link>
+            <Link href={'#'}>Contact Us</Link>
           </Stack>
+
           <Stack align={'flex-start'}>
-            <Text fontSize={"20px"}>Company</Text>
-            <Link color={"gray.400"} href={'#'}>About</Link>
-            <Link color={"gray.400"} href={'#'}>Press</Link>
-            <Link color={"gray.400"} href={'#'}>Careers</Link>
-            <Link color={"gray.400"} href={'#'}>Contact</Link>
-            <Link color={"gray.400"} href={'#'}>Partners</Link>
+            <Text fontSize={"2xl"} mb={"10px"}>Support</Text>
+            <Link href={'#'}>Help Center</Link>
+            <Link href={'#'}>Safety Center</Link>
+            <Link href={'#'}>Community Guidelines</Link>
           </Stack>
+
           <Stack align={'flex-start'}>
-            <Text fontSize={"20px"}>Support</Text>
-            <Link color={"gray.400"} href={'#'}>Help Center</Link>
-            <Link color={"gray.400"} href={'#'}>Terms of Service</Link>
-            <Link color={"gray.400"} href={'#'}>Legal</Link>
-            <Link color={"gray.400"} href={'#'}>Privacy Policy</Link>
-            <Link color={"gray.400"} href={'#'}>Status</Link>
+            <Text fontSize={"2xl"} mb={"10px"}>Legal</Text>
+            <Link href={'#'}>Cookies Policy</Link>
+            <Link href={'#'}>Privacy Policy</Link>
+            <Link href={'#'}>Terms of Service</Link>
+            <Link href={'#'}>Law Enforcement</Link>
           </Stack>
+
           <Stack align={'flex-start'}>
-            <Text fontSize={"20px"}>Follow Us</Text>
-            <Link color={"gray.400"} href={'#'}>Facebook</Link>
-            <Link color={"gray.400"} href={'#'}>Twitter</Link>
-            <Link color={"gray.400"} href={'#'}>Dribbble</Link>
-            <Link color={"gray.400"} href={'#'}>Instagram</Link>
-            <Link color={"gray.400"} href={'#'}>LinkedIn</Link>
+            <Text fontSize={"2xl"} mb={"10px"}>Install App</Text>
+           <Image src={"https://tse4.mm.bing.net/th?id=OIP.fn_qr7uzdYZfa8zVcFbNYgHaCj&pid=Api&P=0"} height={"60px"} width={"180px"}/>
+           <Image src={"https://tse4.mm.bing.net/th?id=OIP.565KyTxmO9dV3WDTaevTvQHaCq&pid=Api&P=0"} height={"60px"} width={"180px"}/>
           </Stack>
         </SimpleGrid>
       </Container>
+
+      <Box
+        borderTopWidth={1}
+        borderStyle={'solid'}
+        borderColor={useColorModeValue('gray.200', 'gray.700')}>
+        <Container
+          as={Stack}
+          maxW={'6xl'}
+          py={4}
+          direction={{ base: 'column', md: 'row' }}
+          spacing={4}
+          justify={{ md: 'space-between' }}
+          align={{ md: 'center' }}>
+          <Text>©️ 2023 meCare. All rights reserved</Text>
+          <Stack direction={'row'} spacing={6}>
+          <Flex borderRadius={'full'} width={"40px"} flexDirection={"column"} height={"40px "} pl={"12px"}  backgroundColor={"gray.300"} justifyContent={"center"} ><BsTwitter  /></Flex>
+            
+            <Flex borderRadius={'full'} width={"40px"} flexDirection={"column"} height={"40px "}  pl={"12px"}  backgroundColor={"gray.300"} justifyContent={"center"}><BsYoutube  /></Flex>
+           
+              
+              <Flex borderRadius={'full'} width={"40px"}  flexDirection={"column"} height={"40px "}  pl={"12px"} backgroundColor={"gray.300"} justifyContent={"center"}><BsInstagram /></Flex>
+           
+              
+            
+          </Stack>
+        </Container>
+      </Box>
     </Box>
   );
 }

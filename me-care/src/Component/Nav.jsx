@@ -4,14 +4,17 @@ import { FaUser  } from 'react-icons/fa';
 import {  BsFillCartFill } from "react-icons/bs";
 import { IoMdHeart } from "react-icons/io";
 import Logo from "../images/Logo.png"
-
+import {Link as RouterLink} from 'react-router-dom';
 function Navbar(){
     return (
         <>
         <Box bg={"gray.100"} boxShadow={"rgba(0, 0, 0, 0.16) 0px 1px 4px;"}>
         <Flex flexDirection={"row"}  >
     <Box ml={9}>
+    <RouterLink to={"/massagechair"}>
+
         <Image m={2} borderRadius={5} boxSize={"40px"} width={"200px"} src={Logo} alt='Dan Abramov' />
+    </RouterLink>
     </Box>
 <Spacer/>
 <Box>
