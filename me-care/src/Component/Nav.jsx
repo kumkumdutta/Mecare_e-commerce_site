@@ -25,10 +25,11 @@ function Navbar(){
 </Box>
 <Spacer/>
 <Flex flexDirection={"row"} gap={"20px"} alignItems={"center"} mr={100} >
-<FaUser />
+<RouterLink to="/login"><FaUser /></RouterLink>
 
 < IoMdHeart />
-<BsFillCartFill />
+<RouterLink to="/cart"><BsFillCartFill /></RouterLink>
+
 </Flex>
 </Flex>
     </Box>  
