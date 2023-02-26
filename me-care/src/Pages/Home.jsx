@@ -22,7 +22,7 @@ function Home(){
     <Navbar/>
     <Center>
         <Flex flexDirection={"row"} gap={30} >
-            <RouterLink></RouterLink>
+           
         <Banner main="Massage" item1="Massage Chairs" item2="Eye" item3="Foot & Leg" item4="Hand" item5="Roller" fn1={"/massagechair"}/> 
         <Banner main="Wellness" item1="Bath" item2="Cleansers & Serums" item3="CGrooming" item4="Hair Care" item5="Skin Care" /> 
         <Banner main="Sleep" item1="Pillows" item2="Mattress" item3="Bedding" item4="Clocks" item5="Air Quality"/> 
@@ -64,8 +64,9 @@ function Home(){
             <Text fontFamily={"Georgia, serif"} color={"gray.600"} mt={"6px"}>Audio</Text>
         </Flex>
         <Flex flexDirection={"column"}>
-        <Image width={"150px"} height={"150px"} src={"https://cdn.shopify.com/s/files/1/0262/2226/4423/files/descarga_15_1600x.webp?v=1652917776"} borderRadius={"full"}/>
-            <Text fontFamily={"Georgia, serif"} color={"gray.600"} mt={"6px"}>Massage Chairs</Text>
+            <RouterLink to="/massagechair"><Image width={"150px"} height={"150px"} src={"https://cdn.shopify.com/s/files/1/0262/2226/4423/files/descarga_15_1600x.webp?v=1652917776"} borderRadius={"full"}/>
+            <Text fontFamily={"Georgia, serif"} color={"gray.600"} mt={"6px"}>Massage Chairs</Text></RouterLink>
+        
         </Flex>
         <Flex flexDirection={"column"}>
         <Image width={"150px"} height={"150px"} src={"https://cdn.shopify.com/s/files/1/0262/2226/4423/files/descarga_5_1600x.webp?v=1652917431"}

@@ -6,12 +6,17 @@ import {
     Text,
     Stack,
     Image,
+    Button,
   } from '@chakra-ui/react';
+ import axios from 'axios'; 
+  
   
 //   const IMAGE =
 //     'https://images.unsplash.com/photo-1518051870910-a46e30d9db16?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80';
   
-  export default function ProductSimple({image,title,price,category}) {
+  export default function ProductSimple({image,title,price,category,id,handledelete}) {
+    
+
     return (
       <Center py={12}>
         <Box
@@ -20,7 +25,7 @@ import {
           maxW={'330px'}
           w={'full'}
           bg={useColorModeValue('white', 'gray.800')}
-          boxShadow={'2xl'}
+          // boxShadow={'2xl'}
           rounded={'lg'}
           pos={'relative'}
           zIndex={1}>
@@ -68,6 +73,8 @@ import {
               <Text textDecoration={'line-through'} color={'gray.600'}>
                 {price}
               </Text>
+             
+              <Button onClick={()=>{handledelete()}}>Delete</Button>
             </Stack>
           </Stack>
         </Box>
