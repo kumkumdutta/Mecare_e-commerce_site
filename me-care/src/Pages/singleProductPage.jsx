@@ -28,46 +28,10 @@ import {
 import Navbar from '../Component/Nav';
 import {Link as RouterLink} from 'react-router-dom'
 
-// import { Button, ButtonGroup, Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverFooter, PopoverHeader, PopoverTrigger, useDisclosure } from "@chakra-ui/react"
 
-// export default function ControlledUsage() {
-//     const { isOpen, onToggle, onClose } = useDisclosure()
-  
-//     return (
-//       <>
-//         <Button mr={5} onClick={onToggle}>
-          
-//         </Button>
-//         <Popover
-//           returnFocusOnClose={false}
-//           isOpen={isOpen}
-//           onClose={onClose}
-//           placement='right'
-//           closeOnBlur={false}
-//         >
-//           <PopoverTrigger>
-            
-//           </PopoverTrigger>
-//           <PopoverContent>
-//             <PopoverHeader fontWeight='semibold'>Happy Shopping!</PopoverHeader>
-//             <PopoverArrow />
-//             <PopoverCloseButton />
-//             <PopoverBody>
-//               Product Added To Cart
-//             </PopoverBody>
-//             <PopoverFooter display='flex' justifyContent='flex-end'>
-//               <ButtonGroup size='sm'>
-//                 <Button variant='outline'>Go to Cart</Button>
-                
-//               </ButtonGroup>
-//             </PopoverFooter>
-//           </PopoverContent>
-//         </Popover>
-//       </>
-//     )
-//   }
 
   export default function Simple() {
+    
     const [data,setdata] = useState({})
 let {id} = useParams()
 const getdata = async(id)=>{
@@ -235,7 +199,7 @@ useEffect(()=>{
                 </List>
               </Box>
             </Stack>
-   <Button
+   <Button 
               rounded={'none'}
               w={'full'}
               mt={8}
@@ -247,7 +211,8 @@ useEffect(()=>{
               _hover={{
                 transform: 'translateY(2px)',
                 boxShadow: 'lg',
-              }} onClick={()=> handlePost()}>
+              }} onClick={()=> handlePost()
+              }>
               Add to cart
             </Button>
            
