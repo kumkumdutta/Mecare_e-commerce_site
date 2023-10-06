@@ -48,12 +48,14 @@ const users= {
             data : User
           }).then((res)=>{ 
             if(res.data.token){
+              alert('login successfull')
               console.log(res.data.token)
               Login(res.data.token)
               navigate("/")
             }
           })
         } catch (error) {
+          alert('wrong credentials!!')
           console.log("err")
         }
       }

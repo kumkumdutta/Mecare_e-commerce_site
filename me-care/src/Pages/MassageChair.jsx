@@ -1,21 +1,24 @@
 import ProductSimple from "../Component/card";
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { Box, Image,Text, Flex ,Input,Spacer,Grid, Center} from "@chakra-ui/react";
 import LargeWithAppLinksAndSocial from "../Component/Footer";
 import Navbar from "../Component/Nav";
 import Banner from "../Component/Banner";
 import Simple from './singleProductPage'
 import PostWithLike from "../Component/cartcard";
-const baseURL = "https://json-mock-server-app.onrender.com/massagechair";
+import {ColorRing} from 'react-loader-spinner'
+const baseURL = "https://mecare-api.onrender.com/massagechair";
 
 export default function MassageChairPage() {
   const [post, setPost] = React.useState([]);
+  const [state,setState] = useState(false)
 
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {
         
       setPost(response.data);
+      setState(true)
     });
   }, []);
 
@@ -45,8 +48,20 @@ export default function MassageChairPage() {
 
     <Center>
       <Box>
+
       <Grid templateColumns='repeat(3, 1fr)' columnGap={70} rowGap={50} >
-      {post.map((el)=>(<PostWithLike image={el.image} price={el.price} title={el.title} category={el.category} id={el.id}/>))}
+        {state ?  post.map((el)=>(<PostWithLike image={el.image} price={el.price} title={el.title} category={el.category} id={el.id}/>)) : <ColorRing
+  visible={true}
+  height="80"
+  width="80"
+
+  ariaLabel="blocks-loading"
+  wrapperStyle={{}}
+  wrapperClass="blocks-wrapper"
+  colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+/>}
+
+     
       
     </Grid>
     
