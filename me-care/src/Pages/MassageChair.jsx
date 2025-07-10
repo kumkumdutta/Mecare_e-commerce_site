@@ -8,18 +8,25 @@ import Banner from "../Component/Banner";
 import Simple from './singleProductPage'
 import PostWithLike from "../Component/cartcard";
 import {ColorRing} from 'react-loader-spinner'
-const baseURL = "https://mecare-api.onrender.com/massagechair";
+const baseURL = "https://mecare-api.onrender.com/mecare/get_product_by_category/eye_massage";
 
 export default function MassageChairPage() {
   const [post, setPost] = React.useState([]);
-  const [state,setState] = useState(false)
+  const [state,setState] = useState(false);
+  let token = localStorage.getItem("token");
+
 
   React.useEffect(() => {
-    axios.get(baseURL).then((response) => {
-        
-      setPost(response.data);
-      setState(true)
-    });
+    axios.get(baseURL, {
+  headers: {
+    Authorization: `Bearer ${token}`,
+  }
+}).then((response) => {
+  console.log(response)
+  setPost(response.data.result);
+  console.log(post,post)
+  setState(true);
+});
   }, []);
 
   if (!post) return null;

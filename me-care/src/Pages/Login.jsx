@@ -1,130 +1,166 @@
+import React, { useState } from "react";
 import {
-    Flex,
-    Box,
-    FormControl,
-    FormLabel,
-    Input,
-    Checkbox,
-    Stack,
-    Link,
-    Button,
-    Heading,
-    Text,
-    useColorModeValue,
-  } from '@chakra-ui/react';
-import axios from 'axios';
-import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+  Box,
+  Flex,
+  Heading,
+  Text,
+  FormControl,
+  FormLabel,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Button,
+  useToast,
+  VStack,
+  Image,
+} from "@chakra-ui/react";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { motion } from "framer-motion";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-import { AuthContext } from '../context/AuthcontextProvider';
- 
-const users= {
-  email : "",
-  password : ""
-}
-  export default function  Login() {
-      const [User, setUser] = useState(users);
-      const {Login  }=useContext(AuthContext);
-          const   navigate =  useNavigate();
-          
-      const handleChange=(e)=>{
-         const { name , value } = e.target; 
-        
-         setUser({...User, [name] : value })
+const MotionBox = motion(Box);
+
+const LoginPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [user, setUser] = useState({ email: "", password: "" });
+  const toast = useToast();
+  const navigate = useNavigate();
+
+  const handleChange = (e) =>
+    setUser({ ...user, [e.target.name]: e.target.value });
+
+  const handleSubmit = async () => {
+    try {
+      const res = await axios.post(
+        "https://mecare-api.onrender.com/mecare/auth/login",
+        user
+      );
+
+      if (res.data.token) {
+        toast({
+          title: "Login Successful",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+        });
+        localStorage.setItem("token", res.data.token);
+        navigate("/");
       }
+    } catch (err) {
+      toast({
+        title: "Login Failed",
+        description: err.response?.data?.message || "Invalid credentials",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+    }
+  };
 
-      const handleSubmit=(e)=>{
-        e.preventDefault();
-        
-        handlePost();
-        console.log(User)
-      }
-
-      const handlePost=async()=>{
-        try {
-          return axios({
-            method : "post",
-            url : `https://reqres.in/api/login`,
-            data : User
-          }).then((res)=>{ 
-            if(res.data.token){
-              alert('login successfull')
-              console.log(res.data.token)
-              Login(res.data.token)
-              navigate("/")
-            }
-          })
-        } catch (error) {
-          alert('wrong credentials!!')
-          console.log("err")
-        }
-      }
-
-  const {email, password } = User;
-    return (
+  return (
+    <Flex
+      minH="100vh"
+      bg="gray.50"
+      direction={{ base: "column", md: "row" }}
+    >
+      {/* Left Banner */}
       <Flex
-        minH={'100vh'}
-        align={'center'}
-        justify={'center'}
-        bg={useColorModeValue('gray.50', 'gray.800')}>
-        <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-          <Stack align={'center'}>
-            <Heading fontSize={'4xl'}>Sign in to your account</Heading>
-            <Text fontSize={'lg'} color={'gray.600'}>
-              to enjoy all of our cool <Link color={'blue.400'}>features</Link> ✌️
-            </Text>
-          </Stack>
-          <Box
-            rounded={'lg'}
-            bg={useColorModeValue('white', 'gray.700')}
-            boxShadow={'lg'}
-            p={8}>
-              <form onSubmit={handleSubmit}> 
-            <Stack spacing={4}>
-              {/* email  */}
-              <FormControl id="email">
-                <FormLabel>Email address</FormLabel>
-                <Input type="email" 
-                name="email"
-                value={email}
-                onChange={handleChange}
-                />
-              </FormControl>
-
-            {/* password */}
-              <FormControl id="password">
-                <FormLabel>Password</FormLabel>
-                <Input type="password" 
-                name="password"
-                value={password}
-                onChange={handleChange}               
-                />
-              </FormControl>
-
-              <Stack spacing={10}>
-                <Stack
-                  direction={{ base: 'column', sm: 'row' }}
-                  align={'start'}
-                  justify={'space-between'}>
-                  <Checkbox>Remember me</Checkbox>
-                  <Link color={'blue.400'}>Forgot password?</Link>
-                </Stack>
-                <Button
-                  bg={'blue.400'}
-                  color={'white'}
-                  _hover={{
-                    bg: 'blue.500',
-                  }}
-                  type="submit"
-                  isDisabled={User.email==="" || User.password==="" }
-                  >
-                  Sign in 
-                </Button>
-              </Stack>
-            </Stack>
-              </form> 
-          </Box>
-        </Stack>
+        flex={1}
+        align="center"
+        justify="center"
+        bgGradient="linear(to-tr, #f6d365, #fda085)"
+        color="white"
+        px={10}
+        py={8}
+        textAlign="center"
+        direction="column"
+      >
+        <Box>
+          <Heading fontSize="4xl" mb={4}>Welcome to MeCare</Heading>
+          <Text fontSize="lg">
+            Your wellness, our priority. Login to explore amazing health products.
+          </Text>
+          <Image
+            src="https://i.postimg.cc/fbBkyjgD/undraw-conference-3n82.png"
+            alt="E-commerce Illustration"
+            mt={6}
+            borderRadius="lg"
+          />
+        </Box>
       </Flex>
-    );
-  }
+
+      {/* Login Form */}
+      <Flex flex={1} align="center" justify="center" px={6} py={12}>
+        <MotionBox
+          bg="white"
+          p={10}
+          w="full"
+          maxW="400px"
+          boxShadow="2xl"
+          rounded="xl"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+        >
+          <VStack spacing={6} align="stretch">
+            <Heading size="lg" textAlign="center" color="gray.700">
+              Login to your account
+            </Heading>
+
+            <FormControl isRequired>
+              <FormLabel>Email address</FormLabel>
+              <Input
+                name="email"
+                type="email"
+                value={user.email}
+                onChange={handleChange}
+                placeholder="you@example.com"
+              />
+            </FormControl>
+
+            <FormControl isRequired>
+              <FormLabel>Password</FormLabel>
+              <InputGroup>
+                <Input
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  value={user.password}
+                  onChange={handleChange}
+                  placeholder="••••••••"
+                />
+                <InputRightElement h="full">
+                  <Button
+                    variant="ghost"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <ViewOffIcon /> : <ViewIcon />}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+            </FormControl>
+
+            <Button
+              colorScheme="orange"
+              size="lg"
+              onClick={handleSubmit}
+              _hover={{ transform: "scale(1.05)" }}
+              transition="all 0.2s"
+            >
+              Login
+            </Button>
+
+            <Text textAlign="center" fontSize="sm" color="gray.500">
+              Don’t have an account?{" "}
+              <Text as="span" color="orange.500" fontWeight="bold">
+                Sign up
+              </Text>
+            </Text>
+          </VStack>
+        </MotionBox>
+      </Flex>
+    </Flex>
+  );
+};
+
+export default LoginPage;
