@@ -11,7 +11,7 @@ import {
    
     
 import {Link as RouterLink} from "react-router-dom"
-function Banner({main,item1,item2,item3,item4,item5,fn1}){
+function Banner({main,item1,item2,item3,item4,item5,fn1,fn2,fn3,fn4,fn5}){
     const { isOpen, onOpen, onClose } = useDisclosure();
     
 
@@ -40,13 +40,14 @@ function Banner({main,item1,item2,item3,item4,item5,fn1}){
             </MenuButton>
             <MenuList onMouseEnter={onOpen} onMouseLeave={onClose}>
                   <RouterLink to={fn1}><MenuItem>{item1}</MenuItem> </RouterLink>
+                  <RouterLink to={fn2}><MenuItem>{item2}</MenuItem> </RouterLink>
+                  <RouterLink to={fn3}><MenuItem>{item3}</MenuItem> </RouterLink>
+                  <RouterLink to={fn4}><MenuItem>{item4}</MenuItem> </RouterLink>
+                  <RouterLink to={fn5}><MenuItem>{item5}</MenuItem> </RouterLink>
         
             
                 
-                <MenuItem>{item2}</MenuItem>
-                <MenuItem>{item3}</MenuItem>
-                <MenuItem>{item4}</MenuItem>
-                <MenuItem>{item5}</MenuItem>
+                
             </MenuList>
         </Menu>
     

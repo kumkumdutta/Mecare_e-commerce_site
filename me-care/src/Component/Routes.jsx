@@ -9,6 +9,7 @@ import MassageChairPage from "../Pages/MassageChair";
 import Success from "../Pages/Payment";
 import ControlledUsage from "../Pages/popup";
 import Simple from "../Pages/singleProductPage";
+import EyeSection from "../Pages/Eye";
 
 function AllRoutes() {
     return (
@@ -17,6 +18,7 @@ function AllRoutes() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/massagechair" element={<MassageChairPage />}></Route>
+          <Route path="/eye" element={<EyeSection />}></Route>
           <Route path="/massagechair/:id" element={<Simple/>}></Route>
           <Route path="/cart" element={<Cart/>}></Route>
           <Route path="/checkout" element={<Checkout/>}></Route>

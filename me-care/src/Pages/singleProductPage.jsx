@@ -33,14 +33,16 @@ export default function Simple() {
   
 
   let { id } = useParams();
+  // console.log(id,"**********")
   const getdata = async (id) => {
+    
     return axios({
       method: "get",
-      url: `https://mecare-api.onrender.com/massagechair/${id}`,
+      url: `https://mecare-api.onrender.com/mecare/get_product_by_id/${id}`,
     })
       .then((res) => {
-        console.log(res);
-        setdata(res.data);
+        console.log(res.data);
+        setdata(res.data.result);
 
       })
       .catch((err) => console.log(err));
@@ -59,7 +61,7 @@ export default function Simple() {
         Quantity: 1,
       },
     }).then((res) => {
-      console.log(res);
+      // console.log(res);
       toast.success("item added successfully");
       localStorage.setItem('id',res.data.id)
       window.location.reload()

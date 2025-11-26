@@ -28,6 +28,11 @@ function Home() {
             item4="Hand"
             item5="Roller"
             fn1={"/massagechair"}
+            fn2={"/eye"}
+            fn3={"/massagechair"}
+            fn4={"/massagechair"}
+            fn5={"/massagechair"}
+
           />
           <Banner
             main="Wellness"
@@ -36,6 +41,7 @@ function Home() {
             item3="CGrooming"
             item4="Hair Care"
             item5="Skin Care"
+            
           />
           <Banner
             main="Sleep"
